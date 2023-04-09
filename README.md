@@ -11,7 +11,7 @@ In the cloudformation the userdata section is base64 encoded
         }
         
 It can be decoded using base64 decoder into:
-
+```
 #!/bin/bash
 export WD=/home/ec2-user
 curl https://s3.us-east-2.amazonaws.com/aws-xray-assets.us-east-2/xray-daemon/aws-xray-daemon-3.x.rpm -o $WD/xray.rpm
@@ -27,6 +27,6 @@ yum install -y apache-maven
 cd $WD2
 mvn install
 java -jar $WD2/target/xraydemo1-0.0.1-SNAPSHOT.jar&
-
+```
 
 #here we are installing xray daemon , java 8, git , maven and then cloning ths repo , rnning maven install and then running the jar file.
