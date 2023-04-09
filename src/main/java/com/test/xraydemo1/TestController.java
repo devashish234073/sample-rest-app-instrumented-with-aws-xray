@@ -12,7 +12,8 @@ public class TestController {
 	@GetMapping("/api")
 	public ResponseEntity<String> getMsg(@RequestParam("code") int code) {
 		if(code==200) {
-			return ResponseEntity.ok().body("SUCCESS");
+			String msg = postMessage("test app").getBody();
+			return ResponseEntity.ok().body(String.format("SUCCESS [%s]",msg)) ;
 		} else {
 			if(code>=400 && code<499) {
 				return ResponseEntity.badRequest().body("bad req code:"+code);
