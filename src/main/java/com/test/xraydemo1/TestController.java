@@ -1,5 +1,7 @@
 package com.test.xraydemo1;
 
+import java.lang.management.ManagementFactory;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;
@@ -36,7 +38,9 @@ public class TestController {
 	@GetMapping("/api/v2")
 	public ResponseEntity<String> getMsgV2(@RequestParam("code") int code) {
 		if(code==200) {
-			return ResponseEntity.ok().body("--SUCCESS");
+			String msg = restTemplate.postForObject(
+			         "http://localhost:8081/postapi/v3", "test", String.class);
+			return ResponseEntity.ok().body("--SUCCESS "+msg);
 		} else {
 			if(code>=400 && code<499) {
 				return ResponseEntity.badRequest().body("--bad req code:"+code);
@@ -61,7 +65,9 @@ public class TestController {
 	
 	@PostMapping("/postapi/v3")
 	public ResponseEntity<String> postMessage(@RequestBody String name) {
-		return ResponseEntity.ok().body("Hello "+name);
+		String jvmName = ManagementFactory.getRuntimeMXBean().getName();
+        long pid = Long.parseLong(jvmName.split("@")[0]);
+		return ResponseEntity.ok().body("Hello "+name+" [processid: "+pid+"] ["+jvmName+"]");
 	}
 	
 	@GetMapping("/api2/v1")
