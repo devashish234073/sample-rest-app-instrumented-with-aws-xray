@@ -1,5 +1,6 @@
 package com.test.xraydemo1;
 import java.net.URL;
+import java.util.UUID;
 
 import javax.servlet.Filter;
 
@@ -22,10 +23,13 @@ import com.amazonaws.xray.strategy.sampling.LocalizedSamplingStrategy;
 @Configuration
 public class WebConfig {
   private static final Logger logger = LoggerFactory.getLogger(WebConfig.class);
+  private static String uuid = UUID.randomUUID().toString();
+  
 
   @Bean
   public Filter TracingFilter() {
-    return new AWSXRayServletFilter("app-in-ec2");
+	String[] uuidSplit = uuid.split("-");
+    return new AWSXRayServletFilter("app-in-ec2-"+uuidSplit[uuidSplit.length-1]);
   }
 
   static {
