@@ -24,11 +24,15 @@ import com.amazonaws.xray.strategy.sampling.LocalizedSamplingStrategy;
 public class WebConfig {
   private static final Logger logger = LoggerFactory.getLogger(WebConfig.class);
   private static String uuid = UUID.randomUUID().toString();
+  private static String[] uuidSplit = null;
+  
+  static {
+	  uuidSplit = uuid.split("-");
+  }
   
 
   @Bean
   public Filter TracingFilter() {
-	String[] uuidSplit = uuid.split("-");
     return new AWSXRayServletFilter("app-in-ec2-"+uuidSplit[uuidSplit.length-1]);
   }
 
@@ -41,7 +45,7 @@ public class WebConfig {
 
     AWSXRay.setGlobalRecorder(builder.build());
 
-    AWSXRay.beginSegment("app-in-ec2-init");
+    AWSXRay.beginSegment("app-in-ec2-init-"+uuidSplit[uuidSplit.length-1]);
 
     AWSXRay.endSegment();
   }
