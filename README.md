@@ -36,4 +36,4 @@ java -jar $WD2/target/xraydemo1-0.0.1-SNAPSHOT.jar&
 #here we are installing xray daemon , java 8, git , maven and then cloning ths repo , rnning maven install and then running the jar file.
 
 # Please note: even after the ec2 instance has launched in running state the startup script is still running , th mvn install takes around 5-10 minutes , so please wait for that only after that the application is in running state.
- You can however check the status of that by doing ssh to the instance and checking the log file in /var/log dorectory
+ You can however check the status of that by doing ssh to the instance and checking the log file in /var/log/cloud-init-output.log file
