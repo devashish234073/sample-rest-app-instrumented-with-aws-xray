@@ -5,7 +5,15 @@
       "description": "api",
       "service_name": "*",
       "http_method": "GET",
-      "url_path": "/api",
+      "url_path": "/xraydemo1/api",
+      "fixed_target": 1,
+      "rate": 1.0
+    },
+    {
+      "description": "api",
+      "service_name": "*",
+      "http_method": "GET",
+      "url_path": "/xraydemo2/api",
       "fixed_target": 1,
       "rate": 1.0
     },
@@ -13,7 +21,7 @@
       "description": "api v2",
       "service_name": "*",
       "http_method": "GET",
-      "url_path": "/api/*",
+      "url_path": "/xraydemo1/api/*",
       "fixed_target": 1,
       "rate": 1.0
     }
