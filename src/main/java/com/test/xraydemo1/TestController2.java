@@ -64,7 +64,7 @@ public class TestController2 {
         GetObjectRequest getObjectRequest = new GetObjectRequest(bucketName, objectKey); 
 		S3Object s3Object = s3Client.getObject(getObjectRequest);
 		String objectContent = IOUtils.toString(s3Object.getObjectContent());
-		AWSXRay.endSubsegment();
+		s3Subsegment.end();
 		return objectContent;
 	}
 }
