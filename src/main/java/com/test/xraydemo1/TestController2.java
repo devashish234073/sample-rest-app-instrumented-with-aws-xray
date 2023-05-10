@@ -43,7 +43,7 @@ public class TestController2 {
 				e.printStackTrace();
 				dataFromS3 = e.toString();
 			}
-			return ResponseEntity.ok().body(String.format("SUCCESS [%s]",msg+dataFromS3)) ;
+			return ResponseEntity.ok().body(String.format("SUCCESS [%s] ['dataFromS3':'%s']",msg,dataFromS3)) ;
 		} else {
 			if(code>=400 && code<499) {
 				return ResponseEntity.badRequest().body("bad req code:"+code);
