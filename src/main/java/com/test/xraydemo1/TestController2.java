@@ -20,6 +20,8 @@ import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.amazonaws.services.s3.model.GetObjectRequest;
 import com.amazonaws.services.s3.model.S3Object;
 import com.amazonaws.util.IOUtils;
+import com.amazonaws.xray.AWSXRay;
+import com.amazonaws.xray.entities.Subsegment;
 
 @RestController
 @RequestMapping("xraydemo2")
@@ -54,11 +56,15 @@ public class TestController2 {
 	}
 	
 	private String readDataFromS3() throws IOException {
+		Subsegment s3Subsegment = AWSXRay.beginSubsegment("S3 getObject");
 		String bucketName = "my-bucket-for-xray";
         String objectKey = "my-file.txt";
+        s3Subsegment.putMetadata("bucketName", bucketName);
+        s3Subsegment.putMetadata("objectKey", objectKey);
         GetObjectRequest getObjectRequest = new GetObjectRequest(bucketName, objectKey); 
 		S3Object s3Object = s3Client.getObject(getObjectRequest);
 		String objectContent = IOUtils.toString(s3Object.getObjectContent());
+		AWSXRay.endSubsegment();
 		return objectContent;
 	}
 }
