@@ -54,7 +54,7 @@ public class TestController2 {
 	}
 	
 	private String readDataFromS3() throws IOException {
-		String bucketName = "my-bucket";
+		String bucketName = "my-bucket-for-xray";
         String objectKey = "my-file.txt";
         GetObjectRequest getObjectRequest = new GetObjectRequest(bucketName, objectKey); 
 		S3Object s3Object = s3Client.getObject(getObjectRequest);
