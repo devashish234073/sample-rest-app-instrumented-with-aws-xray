@@ -26,7 +26,7 @@ public class TestController {
 		if(code==200) {
 			//String msg = postMessage("test app").getBody();
 			String msg = restTemplate.postForObject(
-			         "http://localhost:8080/postapi/v3", "test", String.class);
+			         "http://localhost:8080/xraydemo1/postapi/v3", "test", String.class);
 			return ResponseEntity.ok().body(String.format("SUCCESS [%s]",msg)) ;
 		} else {
 			if(code>=400 && code<499) {
@@ -41,7 +41,7 @@ public class TestController {
 	public ResponseEntity<String> getMsgV2(@RequestParam("code") int code) {
 		if(code==200) {
 			String msg = restTemplate.postForObject(
-			         "http://localhost:8081/postapi/v3", "test", String.class);
+			         "http://localhost:8081/xraydemo1/postapi/v3", "test", String.class);
 			return ResponseEntity.ok().body("--SUCCESS "+msg);
 		} else {
 			if(code>=400 && code<499) {
