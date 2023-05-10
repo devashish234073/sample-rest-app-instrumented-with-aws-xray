@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.amazonaws.services.s3.model.GetObjectRequest;
 import com.amazonaws.services.s3.model.S3Object;
 import com.amazonaws.util.IOUtils;
@@ -27,8 +28,7 @@ public class TestController2 {
 	@Autowired
 	RestTemplate restTemplate;
 	
-	@Autowired
-    private AmazonS3 s3Client;
+    private AmazonS3 s3Client = AmazonS3ClientBuilder.defaultClient();
 	
 	@GetMapping("/api")
 	public ResponseEntity<String> getMsg(@RequestParam("code") int code) {
