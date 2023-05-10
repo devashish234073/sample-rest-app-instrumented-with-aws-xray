@@ -24,7 +24,7 @@
       "Properties": {
         "ImageId": "ami-0376ec8eacdf70aae",
         "InstanceType": "t2.micro",
-        "KeyName": "kipee",
+        "KeyName": "kp1",
         "UserData": {
           "Fn::Sub": "IyEvYmluL2Jhc2gKZXhwb3J0IFdEPS9ob21lL2VjMi11c2VyCmN1cmwgaHR0cHM6Ly9zMy51cy1lYXN0LTIuYW1hem9uYXdzLmNvbS9hd3MteHJheS1hc3NldHMudXMtZWFzdC0yL3hyYXktZGFlbW9uL2F3cy14cmF5LWRhZW1vbi0zLngucnBtIC1vICRXRC94cmF5LnJwbQp5dW0gaW5zdGFsbCAteSAkV0QveHJheS5ycG0KeXVtIGluc3RhbGwgLXkgamF2YS0xLjguMC1hbWF6b24tY29ycmV0dG8tZGV2ZWwKeXVtIHVwZGF0ZSAteQp5dW0gaW5zdGFsbCBnaXQgLXkKZXhwb3J0IFdEMj0kV0Qvc2FtcGxlLXJlc3QtYXBwLWluc3RydW1lbnRlZC13aXRoLWF3cy14cmF5CmdpdCBjbG9uZSBodHRwczovL2dpdGh1Yi5jb20vZGV2YXNoaXNoMjM0MDczL3NhbXBsZS1yZXN0LWFwcC1pbnN0cnVtZW50ZWQtd2l0aC1hd3MteHJheSAkV0QyCndnZXQgaHR0cDovL3JlcG9zLmZlZG9yYXBlb3BsZS5vcmcvcmVwb3MvZGNoZW4vYXBhY2hlLW1hdmVuL2VwZWwtYXBhY2hlLW1hdmVuLnJlcG8gLU8gL2V0Yy95dW0ucmVwb3MuZC9lcGVsLWFwYWNoZS1tYXZlbi5yZXBvCnNlZCAtaSBzL1wkcmVsZWFzZXZlci82L2cgL2V0Yy95dW0ucmVwb3MuZC9lcGVsLWFwYWNoZS1tYXZlbi5yZXBvCnl1bSBpbnN0YWxsIC15IGFwYWNoZS1tYXZlbgpjZCAkV0QyCm12biBpbnN0YWxsCmphdmEgLWphciAkV0QyL3RhcmdldC94cmF5ZGVtbzEtMC4wLjEtU05BUFNIT1QuamFyJgo="
         },
