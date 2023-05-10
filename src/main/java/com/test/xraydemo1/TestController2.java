@@ -36,8 +36,10 @@ public class TestController2 {
 	public ResponseEntity<String> getMsg(@RequestParam("code") int code) {
 		if(code==200) {
 			//String msg = postMessage("test app").getBody();
+			Subsegment s3Subsegment = AWSXRay.beginSubsegment("postapi_v3_call");
 			String msg = restTemplate.postForObject(
 			         "http://localhost:8080/xraydemo1/postapi/v3", "test", String.class);
+			s3Subsegment.end();
 			String dataFromS3 = "";
 			try {
 				dataFromS3 = readDataFromS3();
@@ -56,6 +58,7 @@ public class TestController2 {
 	}
 	
 	private String readDataFromS3() throws IOException {
+		AWSXRay.beginSegment("S3 call");
 		Subsegment s3Subsegment = AWSXRay.beginSubsegment("S3 getObject");
 		String bucketName = "my-bucket-for-xray";
         String objectKey = "my-file.txt";
@@ -65,6 +68,7 @@ public class TestController2 {
 		S3Object s3Object = s3Client.getObject(getObjectRequest);
 		String objectContent = IOUtils.toString(s3Object.getObjectContent());
 		s3Subsegment.end();
+		AWSXRay.endSegment();
 		return objectContent;
 	}
 }
